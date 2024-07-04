@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model UserSettings {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String @unique 
+  currency String
+
+    // Relationships
+  categories   Category[]
+  transactions Transaction[]
+  monthHistories MonthHistory[]
+  yearHistories YearHistory[]
+
+}
+
+model Category {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   
+  icon      String
+  name      String
+  type      String   @default("income")
+  createdAt DateTime @default(now())
+  user UserSettings @relation(fields: [userId], references: [userId])
+
+  @@unique([name, userId, type])
+}
+
+model Transaction {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+  amount        Float 
+  description   String
+  date          DateTime
+  userId        String   
+  type          String   @default("income")
+  category      String
+  categoryIcon  String
+  user UserSettings @relation(fields: [userId], references: [userId])
+
+}
+
+model MonthHistory {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String 
+  day      Int
+  month    Int
+  year     Int
+  income   Float
+  expense  Float
+  user UserSettings @relation(fields: [userId], references: [userId])
+
+  
+    @@unique([day, month, year, userId])
+}
+
+model YearHistory {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String 
+  month    Int
+  year     Int
+  income   Float
+  expense  Float
+  user UserSettings @relation(fields: [userId], references: [userId])
+   @@unique([month, year, userId])
+}
