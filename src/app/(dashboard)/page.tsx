@@ -37,13 +37,12 @@ const Dashboard = async () => {
             Hello <span className="capitalize">{user?.firstName}</span>
           </h2>
           <div className="flex gap-3">
-            <Dialogbox types="income">
-              <Button>Income</Button>
-            </Dialogbox>
-            <Dialogbox types="expense">
-            <Button>Expense</Button>
-            
-            </Dialogbox>
+            <Dialogbox types="income" children={<Button>Income</Button>} />
+              
+       
+            <Dialogbox types="expense" children={  <Button>Expense</Button>}/>
+          
+      
           </div>
         </div>
         <div>
