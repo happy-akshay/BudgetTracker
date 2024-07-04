@@ -38,12 +38,12 @@ const Dashboard = async () => {
           </h2>
           <div className="flex gap-3">
             <Dialogbox types="income">
-            {<Button>Income</Button>} 
+            children={<Button>Income</Button>} 
             </Dialogbox>
               
        
             <Dialogbox types="expense">
-            {<Button>Income</Button>} 
+           children= {<Button>Income</Button>} 
             </Dialogbox>
           
       
