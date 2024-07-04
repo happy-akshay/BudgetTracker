@@ -12,21 +12,11 @@ import React from "react";
 
 const Dashboard = async () => {
   const user = await currentUser();
-  // Ensure user is logged in
   if (!user) {
     redirect("/sign-in");
   }
 
-  // if (!user?.id) {
-  //   <Loadings />;
-  //   redirect("/sign-in");
-  // }
-  // Ensure user ID is not undefined
-  // if (!user?.id) {
-  //   console.error("User ID is undefined");
-  //   redirect("/sign-in"); // Redirect to an error page or handle the error appropriately
-  //   // return null;
-  // }
+
 
   const usersettings = await prisma.userSettings.findUnique({
     where: {
@@ -34,10 +24,7 @@ const Dashboard = async () => {
     }
   });
 
-  // if (!usersettings) {
-  //   redirect("/wizard");
-  //   return null;
-  // }
+ 
   if (!usersettings) {
     redirect("/wizard");
     return <Loadings />;
@@ -53,7 +40,10 @@ const Dashboard = async () => {
             <Dialogbox types="income">
               <Button>Income</Button>
             </Dialogbox>
-            <Dialogbox types="expense" children={<Button>Expense</Button>} />
+            <Dialogbox types="expense">
+            <Button>Expense</Button>
+            
+            </Dialogbox>
           </div>
         </div>
         <div>
