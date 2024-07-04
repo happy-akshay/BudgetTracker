@@ -40,10 +40,10 @@ import { DateCreate } from "@/lib/DateCreate";
 
 interface dialogboxprops {
   types: accounts;
-  trigger: ReactNode;
+  children: ReactNode;
 }
 
-const Dialogbox: FC<dialogboxprops> = ({ types, trigger }) => {
+const Dialogbox: FC<dialogboxprops> = ({ types,children }) => {
 
   const [open,setopen]=useState(false)
   const queryClient=useQueryClient()
@@ -86,7 +86,7 @@ const onsubmit=useCallback((value:TransactionSchemaType)=>{
     <>
     <div>
       <Dialog open={open} onOpenChange={setopen}>
-        <DialogTrigger asChild>{trigger}</DialogTrigger>
+        <DialogTrigger asChild>{children}</DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="text-left">
