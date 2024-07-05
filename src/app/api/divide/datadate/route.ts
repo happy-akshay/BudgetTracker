@@ -19,13 +19,13 @@ export async function GET(req: Request) {
       { message: "route datadate not work" },
       {
         status: 400,
-      },
+      }
     );
   }
   const stats = await getBalanceStats(
     user.id,
     queryparams.data.from,
-    queryparams.data.to,
+    queryparams.data.to
   );
   return Response.json(stats);
 }

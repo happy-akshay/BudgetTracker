@@ -31,7 +31,7 @@ const MonthSelector: FC<MonthSelctorProps> = ({ period, setperiod }) => {
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((month) => {
               const monthStr = new Date(period.year, month, 1).toLocaleString(
                 "default",
-                { month: "long" },
+                { month: "long" }
               );
               return (
                 <SelectItem key={month} value={month.toString()}>

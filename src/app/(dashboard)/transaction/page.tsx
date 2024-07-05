@@ -29,7 +29,7 @@ function TransactionsPage() {
               if (!from || !to) return;
               if (differenceInDays(to, from) > MaxDays) {
                 toast.error(
-                  `The selected date range is too big. Max allowed range is ${MaxDays} days!`,
+                  `The selected date range is too big. Max allowed range is ${MaxDays} days!`
                 );
                 return;
               }

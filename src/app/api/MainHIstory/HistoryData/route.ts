@@ -29,7 +29,7 @@ export async function GET(req: Request) {
   if (!queryParams.success) {
     return Response.json(
       { message: "mainhistory/historydata" },
-      { status: 400 },
+      { status: 400 }
     );
   }
   console.log("history data 3");
@@ -46,7 +46,7 @@ export type GetHistoryPeriodsResponseType = Awaited<
 async function getHistorydata(
   userId: string,
   timeframe: Timeframe,
-  period: Period,
+  period: Period
 ) {
   switch (timeframe) {
     case "year":
@@ -110,7 +110,7 @@ async function getYearHistoryData(userId: string, year: number) {
 async function getMonthHistoryData(
   userId: string,
   year: number,
-  month: number,
+  month: number
 ) {
   const result = await prisma.monthHistory.groupBy({
     by: ["day"],

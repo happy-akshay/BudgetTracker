@@ -28,7 +28,7 @@ export async function GET(request: Request) {
   const transactions = await getTransactionsHistory(
     user.id,
     queryParams.data.from,
-    queryParams.data.to,
+    queryParams.data.to
   );
 
   return Response.json(transactions);

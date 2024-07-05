@@ -20,7 +20,7 @@ const DivideCategory: FC<DivideCategoryProps> = ({
     queryKey: ["overview", "stats", "categories", from, to],
     queryFn: async () => {
       const response = await fetch(
-        `api/divide/categoriesdivide?from=${DateCreate(from)}&to=${DateCreate(to)}`,
+        `api/divide/categoriesdivide?from=${DateCreate(from)}&to=${DateCreate(to)}`
       );
       if (!response.ok) {
         throw new Error("error in api/divide/categoriesdivide");

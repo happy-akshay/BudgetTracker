@@ -17,7 +17,6 @@ import {
 import CreateCategoryDialog from "./CreateCategoryDialog";
 import { Check, ChevronsUpDown, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import axios from "axios";
 interface CategoryPickerProps {
   types: accounts;
   onChange: (value: string) => void;
@@ -49,7 +48,7 @@ const CategoryPicker: FC<CategoryPickerProps> = ({ types, onChange }) => {
       setValue(category.name);
       setOpen((prev) => !prev);
     },
-    [setValue, setOpen],
+    [setValue, setOpen]
   );
 
   return (
@@ -97,7 +96,7 @@ const CategoryPicker: FC<CategoryPickerProps> = ({ types, onChange }) => {
                       <Check
                         className={cn(
                           "mr-2 h-4 w-4 opacity-0",
-                          value === category.name && "opacity-100",
+                          value === category.name && "opacity-100"
                         )}
                       />
                     </CommandItem>

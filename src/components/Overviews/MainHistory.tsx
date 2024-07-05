@@ -35,14 +35,14 @@ const MainHistory: FC<MainHistoryProps> = ({ usersettings }) => {
 
   const formMatter = useMemo(
     () => GetFromatterForCurrency(currency),
-    [currency],
+    [currency]
   );
 
   const historyDataQuery = useQuery({
     queryKey: ["overview", "history", timeframe, period],
     queryFn: async () => {
       const response = await fetch(
-        `/api/MainHIstory/HistoryData?timeframe=${timeframe}&year=${period.year}&month=${period.month}`,
+        `/api/MainHIstory/HistoryData?timeframe=${timeframe}&year=${period.year}&month=${period.month}`
       );
       if (!response.ok) {
         throw new Error("error in api/mainhistory/Historydata");

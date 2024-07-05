@@ -11,7 +11,7 @@ const StatCard: FC<StatCardProps> = ({ formmatter, title, value, Icon }) => {
     (value: number) => {
       return formmatter.format(value);
     },
-    [formmatter],
+    [formmatter]
   );
   return (
     <>

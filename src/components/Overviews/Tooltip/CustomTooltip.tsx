@@ -52,7 +52,7 @@ function TooltipRow({
     (value: number) => {
       return formatter.format(value);
     },
-    [formatter],
+    [formatter]
   );
 
   return (

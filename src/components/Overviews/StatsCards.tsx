@@ -4,7 +4,6 @@ import { DateCreate, GetFromatterForCurrency } from "@/lib/DateCreate";
 import { UserSettings } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import React, { FC, useMemo } from "react";
-import { string } from "zod";
 import StatCard from "./StatCard";
 import {
   PiggyBank,
@@ -25,7 +24,7 @@ const StatsCards: FC<StatsCardsProps> = ({ Usersettings, from, to }) => {
     queryKey: ["overview", "stats", from, to],
     queryFn: async () => {
       const response = await fetch(
-        `/api/divide/datadate?from=${DateCreate(from)}&to=${DateCreate(to)}`,
+        `/api/divide/datadate?from=${DateCreate(from)}&to=${DateCreate(to)}`
       );
       if (!response.ok) {
         throw new Error("error in api/divide/categoriesdivide");

@@ -15,7 +15,7 @@ const Buttons = () => {
   const [selectedOption, setSelectedOption] = useState<string>("Rupee");
   const router = useRouter();
 
-  const { data, error, refetch } = useQuery({
+  const { refetch } = useQuery({
     queryKey: ["user-settings"],
     queryFn: () => fetch(`/api/user`).then((res) => res.json()),
     enabled: false, // Disable the query from automatically running

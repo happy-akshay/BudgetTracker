@@ -17,14 +17,14 @@ export async function GET(req: Request) {
   if (!queryParams.success) {
     return Response.json(
       { message: "category/divide not work route" },
-      { status: 400 },
+      { status: 400 }
     );
   }
   console.log("forth categorydivide");
   const stats = await getCategoryDivide(
     user.id,
     queryParams.data.from,
-    queryParams.data.to,
+    queryParams.data.to
   );
   console.log("category divide stats");
   return Response.json(stats);

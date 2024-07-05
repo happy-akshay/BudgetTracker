@@ -66,7 +66,7 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({
     (values: CategorySchemaType) => {
       mutate(values);
     },
-    [mutate],
+    [mutate]
   );
 
   return (
@@ -88,7 +88,7 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({
                 <span
                   className={cn(
                     types == "income" ? "text-emerald-400" : "text-red-400",
-                    "capitalize mx-1.5",
+                    "capitalize mx-1.5"
                   )}
                 >
                   {types}

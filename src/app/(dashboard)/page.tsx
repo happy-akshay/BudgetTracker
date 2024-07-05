@@ -1,13 +1,10 @@
 import Dialogbox from "@/components/Dialogbox/Dialogbox";
-import DialogButtons from "@/components/Dialogbox/Dialogbutton";
-import Loadings from "@/components/Loadings";
 import MainHistory from "@/components/Overviews/MainHistory";
 import Overview from "@/components/Overviews/Overview";
 import Wrapper from "@/components/Wrapper";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
-import { UserSettings } from "@prisma/client";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -19,14 +16,9 @@ const Dashboard = async () => {
 
   const usersettings = await prisma.userSettings.findUnique({
     where: {
-      userId: user?.id
-    }
+      userId: user?.id,
+    },
   });
-
-  if (!usersettings) {
-    redirect("/wizard");
-    return <Loadings />;
-  }
 
   return (
     <>
@@ -36,15 +28,8 @@ const Dashboard = async () => {
             Hello <span className="capitalize">{user?.firstName}</span>
           </h2>
           <div className="flex gap-3">
-            {/* <Dialogbox types="income">
-              <Button>Income</Button>
-            </Dialogbox> */}
-            <Button>{<Dialogbox types="income"/>}</Button>
-            <Button>{<Dialogbox types="expense"/>}</Button>
-            {/* <Dialogbox types="expense">
-              <Button>Expense</Button>
-            </Dialogbox> */}
-            {/* <DialogButtons/> */}
+            <Button>{<Dialogbox types="income" />}</Button>
+            <Button>{<Dialogbox types="expense" />}</Button>
           </div>
         </div>
         <div>

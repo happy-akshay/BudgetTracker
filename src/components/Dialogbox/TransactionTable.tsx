@@ -99,7 +99,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
           "capitalize rounded-lg text-center p-2",
           row.original.type === "income" &&
             "bg-emerald-400/10 text-emerald-500",
-          row.original.type === "expense" && "bg-red-400/10 text-red-500",
+          row.original.type === "expense" && "bg-red-400/10 text-red-500"
         )}
       >
         {row.original.type}
@@ -136,7 +136,7 @@ function TransactionTable({ from, to }: Props) {
     queryKey: ["transactions", "history", from, to],
     queryFn: async () => {
       const response = await fetch(
-        `/api/Transaction?from=${DateCreate(from)}&to=${DateCreate(to)}`,
+        `/api/Transaction?from=${DateCreate(from)}&to=${DateCreate(to)}`
       );
       if (!response.ok) {
         throw new Error(" in error api/transaction ");
@@ -236,7 +236,7 @@ function TransactionTable({ from, to }: Props) {
                           ? null
                           : flexRender(
                               header.column.columnDef.header,
-                              header.getContext(),
+                              header.getContext()
                             )}
                       </TableHead>
                     );
@@ -255,7 +255,7 @@ function TransactionTable({ from, to }: Props) {
                       <TableCell key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext(),
+                          cell.getContext()
                         )}
                       </TableCell>
                     ))}

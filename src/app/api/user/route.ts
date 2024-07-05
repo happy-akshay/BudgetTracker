@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     const user = await currentUser();
     if (!user) {
@@ -29,7 +29,7 @@ export async function GET(req: Request) {
   } catch (error) {
     return NextResponse.json(
       { message: "the error is api/user" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
