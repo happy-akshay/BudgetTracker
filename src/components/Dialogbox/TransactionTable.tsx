@@ -53,9 +53,7 @@ type TransactionHistoryRow = GetTransactionHistoryResponseType[0];
 const columns: ColumnDef<TransactionHistoryRow>[] = [
   {
     accessorKey: "category",
-    header: ({ column }) => (
-      <ColumnHeader column={column} title="Category" />
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="Category" />,
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
@@ -91,9 +89,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   },
   {
     accessorKey: "type",
-    header: ({ column }) => (
-      <ColumnHeader column={column} title="Type" />
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="Type" />,
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
@@ -103,7 +99,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
           "capitalize rounded-lg text-center p-2",
           row.original.type === "income" &&
             "bg-emerald-400/10 text-emerald-500",
-          row.original.type === "expense" && "bg-red-400/10 text-red-500"
+          row.original.type === "expense" && "bg-red-400/10 text-red-500",
         )}
       >
         {row.original.type}
@@ -112,9 +108,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   },
   {
     accessorKey: "amount",
-    header: ({ column }) => (
-      <ColumnHeader column={column} title="Amount" />
-    ),
+    header: ({ column }) => <ColumnHeader column={column} title="Amount" />,
     cell: ({ row }) => (
       <p className="text-md rounded-lg bg-gray-400/5 p-2 text-center font-medium">
         {row.original.formattedAmount}
@@ -140,13 +134,15 @@ function TransactionTable({ from, to }: Props) {
 
   const history = useQuery<GetTransactionHistoryResponseType>({
     queryKey: ["transactions", "history", from, to],
-    queryFn: async() =>{
-     const response= await fetch(`/api/Transaction?from=${DateCreate(from)}&to=${DateCreate(to)}`)
-    if(!response.ok){
-        throw new Error(" in error api/transaction ")
-    }
-    return response.json()
-}
+    queryFn: async () => {
+      const response = await fetch(
+        `/api/Transaction?from=${DateCreate(from)}&to=${DateCreate(to)}`,
+      );
+      if (!response.ok) {
+        throw new Error(" in error api/transaction ");
+      }
+      return response.json();
+    },
   });
 
   const handleExportCSV = (data: any[]) => {
@@ -240,7 +236,7 @@ function TransactionTable({ from, to }: Props) {
                           ? null
                           : flexRender(
                               header.column.columnDef.header,
-                              header.getContext()
+                              header.getContext(),
                             )}
                       </TableHead>
                     );
@@ -259,7 +255,7 @@ function TransactionTable({ from, to }: Props) {
                       <TableCell key={cell.id}>
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </TableCell>
                     ))}
@@ -296,7 +292,7 @@ function TransactionTable({ from, to }: Props) {
             Next
           </Button>
         </div>
-        </div>
+      </div>
     </div>
   );
 }

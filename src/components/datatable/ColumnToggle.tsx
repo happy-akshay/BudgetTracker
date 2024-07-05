@@ -17,9 +17,7 @@ interface ColumnToggleProps<TData> {
   table: Table<TData>;
 }
 
-export function ColumnToggle<TData>({
-  table,
-}: ColumnToggleProps<TData>) {
+export function ColumnToggle<TData>({ table }: ColumnToggleProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -39,7 +37,7 @@ export function ColumnToggle<TData>({
           .getAllColumns()
           .filter(
             (column) =>
-              typeof column.accessorFn !== "undefined" && column.getCanHide()
+              typeof column.accessorFn !== "undefined" && column.getCanHide(),
           )
           .map((column) => {
             return (

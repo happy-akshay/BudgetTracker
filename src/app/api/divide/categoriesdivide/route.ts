@@ -8,22 +8,25 @@ export async function GET(req: Request) {
   if (!user) {
     redirect("/sign-in");
   }
-  console.log("first categorydivide")
+  console.log("first categorydivide");
   const { searchParams } = new URL(req.url);
   const from = searchParams.get("from");
   const to = searchParams.get("to");
-  console.log("second categorydivide")
+  console.log("second categorydivide");
   const queryParams = OverviewDateSchema.safeParse({ from, to });
   if (!queryParams.success) {
-    return Response.json({message:"category/divide not work route"},{status:400})
+    return Response.json(
+      { message: "category/divide not work route" },
+      { status: 400 },
+    );
   }
-  console.log("forth categorydivide")
+  console.log("forth categorydivide");
   const stats = await getCategoryDivide(
     user.id,
     queryParams.data.from,
-    queryParams.data.to
+    queryParams.data.to,
   );
-  console.log("category divide stats")
+  console.log("category divide stats");
   return Response.json(stats);
 }
 export type GetCategoryDivideType = Awaited<
@@ -48,5 +51,5 @@ async function getCategoryDivide(userId: string, from: Date, to: Date) {
       },
     },
   });
-  return stats
+  return stats;
 }

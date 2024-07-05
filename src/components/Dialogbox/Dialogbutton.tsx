@@ -1,8 +1,8 @@
-'use client'
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { accounts } from '@/lib/types';
-import Dialogbox from './Dialogbox';
+"use client";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { accounts } from "@/lib/types";
+import Dialogbox from "./Dialogbox";
 
 const DialogButtons = () => {
   const [dialogType, setDialogType] = useState<accounts | null>(null);

@@ -1,11 +1,16 @@
-'use server'
+"use server";
 import { prisma } from "@/lib/prisma";
-import { CategorySchema, CategorySchemaType, DeleteCategorySchema, DeleteCategorySchemaType } from "@/schema/categories";
+import {
+  CategorySchema,
+  CategorySchemaType,
+  DeleteCategorySchema,
+  DeleteCategorySchemaType,
+} from "@/schema/categories";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-export async function IconAction(form:CategorySchemaType) {
-    console.log("iconaction")
+export async function IconAction(form: CategorySchemaType) {
+  console.log("iconaction");
   const parsedBody = CategorySchema.safeParse(form);
   if (!parsedBody.success) {
     throw new Error("bad request");
@@ -15,19 +20,16 @@ export async function IconAction(form:CategorySchemaType) {
     redirect("/sign-in");
   }
   const { name, icon, type } = parsedBody.data;
-  console.log("last")
+  console.log("last");
   return await prisma.category.create({
     data: {
       userId: user.id,
-      name:name,
-      icon:icon,
-      type:type,
+      name: name,
+      icon: icon,
+      type: type,
     },
   });
 }
-
-
-
 
 export async function DeleteCategory(form: DeleteCategorySchemaType) {
   const parsedBody = DeleteCategorySchema.safeParse(form);

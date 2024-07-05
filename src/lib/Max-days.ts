@@ -1,1 +1,1 @@
-export const MaxDays=90
+export const MaxDays = 90;

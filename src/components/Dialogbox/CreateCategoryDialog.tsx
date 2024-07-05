@@ -27,10 +27,13 @@ import { Category } from "@prisma/client";
 import { toast } from "sonner";
 interface CreateCategoryDialogProps {
   types: accounts;
-  onSuccessCallback:(category:Category)=>void;
+  onSuccessCallback: (category: Category) => void;
   trigger?: ReactNode;
 }
-const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({ types,onSuccessCallback }) => {
+const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({
+  types,
+  onSuccessCallback,
+}) => {
   const queryClient = useQueryClient();
   const [Open, setOpen] = useState(false);
   const form = useForm<CategorySchemaType>({
@@ -48,7 +51,7 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({ types,onSuccessCa
         type: types,
       });
       toast.success(`Category ${data.name} created successfully`);
-      onSuccessCallback(data)
+      onSuccessCallback(data);
       await queryClient.invalidateQueries({
         queryKey: ["categories"],
       });
@@ -61,10 +64,9 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({ types,onSuccessCa
   });
   const onsubmit = useCallback(
     (values: CategorySchemaType) => {
-  
       mutate(values);
     },
-    [mutate]
+    [mutate],
   );
 
   return (
@@ -86,7 +88,7 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({ types,onSuccessCa
                 <span
                   className={cn(
                     types == "income" ? "text-emerald-400" : "text-red-400",
-                    "capitalize mx-1.5"
+                    "capitalize mx-1.5",
                   )}
                 >
                   {types}
@@ -170,7 +172,8 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({ types,onSuccessCa
                 </Button>
               </DialogClose>
               <DialogClose asChild>
-                <Button type="button"
+                <Button
+                  type="button"
                   className="hover:bg-red-700"
                   onClick={() => {
                     form.reset();
@@ -189,7 +192,9 @@ const CreateCategoryDialog: FC<CreateCategoryDialogProps> = ({ types,onSuccessCa
 
 export default CreateCategoryDialog;
 
-
-
-{/* <DialogFooter className="flex gap-2 md:mt-12 mt-0">  // this is change */}
-{/* <PopoverContent className="w-[80%] h-[40px] md:-mt-96 -mt-0 md:mx-0"> this is change */}
+{
+  /* <DialogFooter className="flex gap-2 md:mt-12 mt-0">  // this is change */
+}
+{
+  /* <PopoverContent className="w-[80%] h-[40px] md:-mt-96 -mt-0 md:mx-0"> this is change */
+}

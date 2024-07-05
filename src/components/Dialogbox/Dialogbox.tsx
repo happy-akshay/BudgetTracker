@@ -61,7 +61,7 @@ const Dialogbox: FC<DialogboxProps> = ({ types, children }) => {
     (value: string) => {
       form.setValue("category", value);
     },
-    [form]
+    [form],
   );
 
   const { mutate, isPending } = useMutation({
@@ -89,7 +89,7 @@ const Dialogbox: FC<DialogboxProps> = ({ types, children }) => {
         date: DateCreate(value.date),
       });
     },
-    [mutate]
+    [mutate],
   );
 
   return (
@@ -103,7 +103,7 @@ const Dialogbox: FC<DialogboxProps> = ({ types, children }) => {
               <span
                 className={cn(
                   types === "income" ? "text-emerald-400" : "text-red-400",
-                  "mx-2"
+                  "mx-2",
                 )}
               >
                 {types}
@@ -131,7 +131,6 @@ const Dialogbox: FC<DialogboxProps> = ({ types, children }) => {
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name="amount"
@@ -182,7 +181,7 @@ const Dialogbox: FC<DialogboxProps> = ({ types, children }) => {
                             <Button
                               className={cn(
                                 "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
+                                !field.value && "text-muted-foreground",
                               )}
                             >
                               {field.value ? (
@@ -245,24 +244,6 @@ const Dialogbox: FC<DialogboxProps> = ({ types, children }) => {
 };
 
 export default Dialogbox;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { FC, ReactNode, useCallback, useState } from "react";
 // import {
@@ -427,7 +408,7 @@ export default Dialogbox;
 //                   <FormItem>
 //                     <FormLabel className="block">Date</FormLabel>
 //                     <Popover>
-//                       <PopoverTrigger asChild> 
+//                       <PopoverTrigger asChild>
 //                         <FormControl>
 //                           <Button className={cn("w-full pl-3 text-left font-normal",!field.value && "text-muted-foreground")}>
 //                             {field.value?(format(field.value,"PPP")):(<span>Pick a date</span>)}
@@ -436,7 +417,7 @@ export default Dialogbox;
 //                         </FormControl>
 //                       </PopoverTrigger>
 //                       <PopoverContent>
-//                         <Calendar mode='single' selected={field.value} initialFocus 
+//                         <Calendar mode='single' selected={field.value} initialFocus
 //                         onSelect={(value)=>{
 //                           if(!value) return;
 //                           field.onChange(value)
