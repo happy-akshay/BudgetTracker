@@ -17,19 +17,17 @@ const Dashboard = async () => {
     redirect("/sign-in");
   }
 
-
-
   const usersettings = await prisma.userSettings.findUnique({
     where: {
       userId: user?.id
     }
   });
 
- 
   if (!usersettings) {
     redirect("/wizard");
     return <Loadings />;
   }
+
   return (
     <>
       <Wrapper>
@@ -39,25 +37,19 @@ const Dashboard = async () => {
           </h2>
           <div className="flex gap-3">
             <Dialogbox types="income">
-         <Button>Income</Button>
+              <Button>Income</Button>
             </Dialogbox>
-              
-       
             <Dialogbox types="expense">
-          <Button>Income</Button>
+              <Button>Expense</Button>
             </Dialogbox>
-          {/* <DialogButtons/> */}
-      
           </div>
         </div>
         <div>
-          <Overview usersettings={usersettings||undefined}/>
+          <Overview usersettings={usersettings || undefined} />
         </div>
-        
-        <div className="mt-6"> 
-          <MainHistory usersettings={usersettings||undefined}/>
+        <div className="mt-6">
+          <MainHistory usersettings={usersettings || undefined} />
         </div>
-
       </Wrapper>
     </>
   );
