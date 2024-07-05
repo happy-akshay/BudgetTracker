@@ -1,4 +1,5 @@
 import Dialogbox from "@/components/Dialogbox/Dialogbox";
+import DialogButtons from "@/components/Dialogbox/Dialogbutton";
 import Loadings from "@/components/Loadings";
 import MainHistory from "@/components/Overviews/MainHistory";
 import Overview from "@/components/Overviews/Overview";
@@ -38,14 +39,14 @@ const Dashboard = async () => {
           </h2>
           <div className="flex gap-3">
             <Dialogbox types="income">
-            children={<Button>Income</Button>} 
+         <Button>Income</Button>
             </Dialogbox>
               
        
             <Dialogbox types="expense">
-           children= {<Button>Income</Button>} 
+          <Button>Income</Button>
             </Dialogbox>
-          
+          {/* <DialogButtons/> */}
       
           </div>
         </div>
@@ -53,8 +54,6 @@ const Dashboard = async () => {
           <Overview usersettings={usersettings||undefined}/>
         </div>
         
-{/* ites working  */}
-
         <div className="mt-6"> 
           <MainHistory usersettings={usersettings||undefined}/>
         </div>
